@@ -11,7 +11,7 @@ void task2(){
 }
 
 int main(){
-    CreateTask(hello_world, 1);
-    CreateTask(task2, 2);
+    createTask(hello_world, 1);
+    createTask(task2, 2);
     startScheduler();
 }
