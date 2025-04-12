@@ -31,7 +31,7 @@ typedef struct {
     task_state_t state;           // Task state
 } TaskControlBlock;
 
-static TaskControlBlock RTOS_tasks[MAX_TASKS] = {0};
+static TaskControlBlock* RTOS_tasks[MAX_TASKS] = {0};
 static uint8_t currentTaskIndex = 0;
 static uint8_t taskCount = 0;
 static uint32_t currentTicks = 0;
@@ -40,16 +40,14 @@ static uint32_t currentTicks = 0;
 void initRTOS(uint32_t);
 BaseType_t createTask( TaskFunction pxTaskCode,uint32_t stack_size, uint8_t priority);
 BaseType_t startScheduler(void);
-TaskControlBlock getNextTask(void);
 TaskControlBlock* get_next_ready_task(void);
 BaseType_t yeild_to_scheduler(void);
 BaseType_t run_next_ready_task(void);
-BaseType_t switch_to_task(TaskControlBlock *task);
+void switch_to_task(TaskControlBlock *task);
 TaskControlBlock* get_current_task();
 BaseType_t taskDelay(uint32_t delayTicks);
 void tick_scheduler_callback(void);
 void printTaskDetails(void);
-
 
 
 #endif

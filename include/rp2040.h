@@ -27,5 +27,7 @@
 
 
 void initSystick(uint32_t);
+void context_Switch(void);
+void isr_pendsv(void);
 
 #endif
